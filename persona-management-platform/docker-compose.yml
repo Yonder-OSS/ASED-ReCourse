@@ -1,0 +1,37 @@
+version: '3'
+
+networks:
+  backend:
+
+services:
+
+  emu:
+    build: .
+    command: npm test 
+    depends_on:
+      - entity-db
+    environment: 
+      - NODE_ENV=development
+      - WIPE_DATA=true  # set to true to clear database (happens before seeding)
+      - SEED_NUM=5 # number of entities per type to seed the db with (won't work if db not empty)
+    env_file:
+      - pmp.env
+    networks:
+      - backend
+    ports:
+      - 3200:3000
+      - 6200:5858
+    volumes:
+      - .:/app
+      - /app/node_modules
+
+  ### entity database
+  entity-db:
+    image: mongo
+    env_file:
+      - pmp.env
+    networks:
+      - backend
+    ports:
+      - 27017:27017
+

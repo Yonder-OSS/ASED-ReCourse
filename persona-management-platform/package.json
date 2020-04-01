@@ -1,0 +1,42 @@
+{
+  "name": "pmp",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "if [[ $NODE_ENV == \"production\" ]]; then npm run prod; elif [[ $NODE_ENV == \"test\" ]]; then npm test; else npm run dev; fi",
+    "prod": "node --harmony app.js",
+    "dev": "node_modules/.bin/nodemon --harmony --inspect=0.0.0.0:5858 app.js",
+    "test": "node_modules/.bin/mocha --harmony --inspect=0.0.0.0:5858 --colors --watch test/routes.test.js",
+    "seed-db": "node --harmony scripts/seed-db.js",
+    "migrate-up": "node --harmony scripts/run-up.js",
+    "migrate-down": "node --harmony scripts/run-down.js"
+  },
+  "dependencies": {
+    "@new-knowledge/http-utils": "^1.0.3",
+    "@new-knowledge/logger": "^1.2.3",
+    "@new-knowledge/nk-kafka-node": "^1.0.3",
+    "body-parser": "~1.17.1",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.3",
+    "deep-diff": "^0.3.8",
+    "express": "~4.15.2",
+    "gridfs-stream": "^1.1.1",
+    "jsonfile": "^4.0.0",
+    "lodash": "^4.17.4",
+    "mongodb": "^2.2.30",
+    "mongoose": "^4.11.4",
+    "pluralize": "^7.0.0",
+    "promise-retry": "^1.1.1",
+    "request-errors": "^1.0.1"
+  },
+  "devDependencies": {
+    "chai": "^4.1.0",
+    "chai-http": "^3.0.0",
+    "faker": "^4.1.0",
+    "mocha": "^3.5.0",
+    "moment": "^2.18.1",
+    "nodemon": "^1.11.0",
+    "request": "^2.83.0",
+    "request-promise": "^4.2.2"
+  }
+}

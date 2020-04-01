@@ -1,0 +1,12 @@
+cmd: python prepare.py
+deps:
+- md5: 0d47f210b2020fbc8d89e0cee3356f9a
+  path: prepare.py
+md5: 08c3f5c362a711b8069946ec0b505f64
+outs:
+- cache: true
+  md5: d115dbb6f1372465e95f5356adbfb9d7.dir
+  metric: false
+  path: dry_run_data/prepared
+  persist: false
+wdir: .
